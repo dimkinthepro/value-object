@@ -1,7 +1,6 @@
 {
   "name": "dimkinthepro/value-object",
   "minimum-stability": "stable",
-  "version": "1.0.0",
   "license": "MIT",
   "type": "library",
   "description": "ValueObject library",
