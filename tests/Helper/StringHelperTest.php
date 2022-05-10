@@ -21,7 +21,7 @@ class StringHelperTest extends TestCase
     {
         return [
             ['  STRING   ', 'string'],
-            ['  s@stRing   ', 's@string'],
+            ['  s@st-Ri.ng   ', 's@st-ri.ng'],
             ['  a@stRing[]   ', 'a@string'],
             ["  string\xe2\x80\x8b\xc2\xad   ", 'string'],
         ];
@@ -38,7 +38,7 @@ class StringHelperTest extends TestCase
     public function providerTestClearDomain(): array
     {
         return [
-            ['  STRING   ', 'string'],
+            ['  STRI-N.G   ', 'stri-n.g'],
             ['  s@stRing   ', 'sstring'],
             ['  a@stRing[]   ', 'astring'],
             ["  string\xe2\x80\x8b\xc2\xad   ", 'string'],
