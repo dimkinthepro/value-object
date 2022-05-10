@@ -1,0 +1,77 @@
+<?php
+
+$finder = (new PhpCsFixer\Finder())
+    ->in(__DIR__)
+    ->exclude('var')
+;
+
+return (new PhpCsFixer\Config())
+    ->setRiskyAllowed(true)
+    ->setRules([
+        '@PSR12' => true,
+        '@Symfony' => true,
+        '@Symfony:risky' => true,
+        'strict_param' => true,
+        'cast_spaces' => ['space' => 'single'],
+        'return_type_declaration' => ['space_before' => 'none'],
+        'single_space_after_construct' => ['constructs' => [
+            'abstract',
+            'as',
+            'attribute',
+            'break',
+            'case',
+            'catch',
+            'class',
+            'clone',
+            'comment',
+            'const',
+            'const_import',
+            'continue',
+            'do',
+            'echo',
+            'else',
+            'elseif',
+            'extends',
+            'final',
+            'finally',
+            'for',
+            'foreach',
+            'function',
+            'function_import',
+            'global',
+            'goto',
+            'if',
+            'implements',
+            'include',
+            'include_once',
+            'instanceof',
+            'insteadof',
+            'interface',
+            'match',
+            'named_argument',
+            'new',
+            'open_tag_with_echo',
+            'php_doc',
+            'php_open',
+            'print',
+            'private',
+            'protected',
+            'public',
+            'require',
+            'require_once',
+            'return',
+            'static',
+            'throw',
+            'trait',
+            'try',
+            'use',
+            'use_lambda',
+            'use_trait',
+            'var',
+            'while',
+            'yield',
+            'yield_from',
+        ]],
+    ])
+    ->setFinder($finder)
+;
