@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tests\DimkinThePro\ValueObject;
 
 use DimkinThePro\ValueObject\EmailValueObject;
-use DimkinThePro\ValueObject\Exception\ValueObjectException;
 use PHPUnit\Framework\TestCase;
 
 class EmailValueObjectTest extends TestCase
@@ -26,8 +25,8 @@ class EmailValueObjectTest extends TestCase
         }
 
         $emailVo = new EmailValueObject($email);
-        self::assertEquals($emailVo->get(), $assertEmail);
-        self::assertEquals($emailVo->getDomain()->get(), $assertDomain);
+        self::assertEquals($emailVo->getValue(), $assertEmail);
+        self::assertEquals($emailVo->getDomain(), $assertDomain);
     }
 
     public function providerTestCase(): array
@@ -37,29 +36,29 @@ class EmailValueObjectTest extends TestCase
                 'email' => "\xe2\x80\x8b\xc2\xad",
                 'assertEmail' => '',
                 'assertDomain' => '',
-                'errorClass' => ValueObjectException::class,
-                'errorMsg' => 'Email address is empty: ""',
+                'errorClass' => \InvalidArgumentException::class,
+                'errorMsg' => 'Expected a value to be a valid e-mail address. Got: ""',
             ],
             [
                 'email' => "  \xe2\x80\x8b\xc2\xad  ",
                 'assertEmail' => '',
                 'assertDomain' => '',
-                'errorClass' => ValueObjectException::class,
-                'errorMsg' => 'Email address is empty: ""',
+                'errorClass' => \InvalidArgumentException::class,
+                'errorMsg' => 'Expected a value to be a valid e-mail address. Got: ""',
             ],
             [
-                'email' => "  eM@ail  ",
+                'email' => '  eM@ail  ',
                 'assertEmail' => '',
                 'assertDomain' => '',
-                'errorClass' => ValueObjectException::class,
-                'errorMsg' => 'Email address is invalid: "em@ail"',
+                'errorClass' => \InvalidArgumentException::class,
+                'errorMsg' => 'Expected a value to be a valid e-mail address. Got: "em@ail"',
             ],
             [
-                'email' => "Em@ail",
+                'email' => 'Em@ail',
                 'assertEmail' => '',
                 'assertDomain' => '',
-                'errorClass' => ValueObjectException::class,
-                'errorMsg' => 'Email address is invalid: "em@ail"',
+                'errorClass' => \InvalidArgumentException::class,
+                'errorMsg' => 'Expected a value to be a valid e-mail address. Got: "em@ail"',
             ],
             [
                 'email' => '  email@EM.ail  ',

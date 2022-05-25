@@ -6,5 +6,5 @@ namespace DimkinThePro\ValueObject;
 
 interface ValueObjectInterface
 {
-    public function get(): mixed;
+    public function getValue(): mixed;
 }

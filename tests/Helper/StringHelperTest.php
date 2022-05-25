@@ -26,22 +26,4 @@ class StringHelperTest extends TestCase
             ["  string\xe2\x80\x8b\xc2\xad   ", 'string'],
         ];
     }
-
-    /**
-     * @dataProvider providerTestClearDomain
-     */
-    public function testClearDomain(string $string, string $assertion): void
-    {
-        self::assertEquals(StringHelper::clearDomain($string), $assertion);
-    }
-
-    public function providerTestClearDomain(): array
-    {
-        return [
-            ['  STRI-N.G   ', 'stri-n.g'],
-            ['  s@stRing   ', 'sstring'],
-            ['  a@stRing[]   ', 'astring'],
-            ["  string\xe2\x80\x8b\xc2\xad   ", 'string'],
-        ];
-    }
 }
