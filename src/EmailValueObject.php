@@ -18,7 +18,7 @@ class EmailValueObject implements ValueObjectInterface
     public function __construct(string $email)
     {
         $email = StringHelper::clearEmail($email);
-        Assert::email($email);
+        Assert::email($email, sprintf('Invalid email provided: "%s"', $email));
 
         $this->email = $email;
         $this->domain = explode('@', $email, 2)[1];
